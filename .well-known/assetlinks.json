@@ -1,0 +1,10 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.carlitoswy.eventfinder",
+    "sha256_cert_fingerprints": [
+      "DCB716CA72A4838C0D23C415EA1D5663FA4F865B86DB729C8D895026977A1FDE"
+    ]
+  }
+}]
