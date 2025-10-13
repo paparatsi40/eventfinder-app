@@ -133,14 +133,35 @@
                     }, 1000);
                 }, 2000);
 
-                // Fallback: si no se abre la app en 7 segundos
-                setTimeout(() => {
-                    content.innerHTML += `
-                        <p style="color: #f44336; margin-top: 20px;">
-                            If the app didn't open automatically, please open EventFinder manually
-                        </p>
-                    `;
-                }, 7000);
+                // Fallback: si no se abre la app en 5 segundos, mostrar botón
+setTimeout(() => {
+    const txId = transactionId;
+    content.innerHTML += `
+        <button 
+            onclick="window.location.href='eventfinder://payment-success?transaction_id=${txId}'; setTimeout(() => { window.location.href='intent://payment-success?transaction_id=${txId}#Intent;scheme=eventfinder;package=com.carlitoswy.eventfinder;end'; }, 500);"
+            style="
+                margin-top: 20px;
+                padding: 15px 30px;
+                background: #667eea;
+                color: white;
+                border: none;
+                border-radius: 25px;
+                font-size: 16px;
+                font-weight: bold;
+                cursor: pointer;
+                box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+                transition: transform 0.2s;
+            "
+            onmouseover="this.style.transform='scale(1.05)'"
+            onmouseout="this.style.transform='scale(1)'"
+        >
+            Open EventFinder App
+        </button>
+        <p style="color: #999; margin-top: 15px; font-size: 14px;">
+            App didn't open? Tap the button above
+        </p>
+    `;
+}, 5000);
 
             } else {
                 // ERROR - No transaction ID
